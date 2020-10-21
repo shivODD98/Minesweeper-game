@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/Minesweeper-game/static/css/main.dd4e2329.chunk.css",
-    "main.js": "/Minesweeper-game/static/js/main.317b3c58.chunk.js",
-    "main.js.map": "/Minesweeper-game/static/js/main.317b3c58.chunk.js.map",
+    "main.css": "/Minesweeper-game/static/css/main.568aa9ea.chunk.css",
+    "main.js": "/Minesweeper-game/static/js/main.9dd5c13a.chunk.js",
+    "main.js.map": "/Minesweeper-game/static/js/main.9dd5c13a.chunk.js.map",
     "runtime-main.js": "/Minesweeper-game/static/js/runtime-main.41195150.js",
     "runtime-main.js.map": "/Minesweeper-game/static/js/runtime-main.41195150.js.map",
     "static/js/2.3b802841.chunk.js": "/Minesweeper-game/static/js/2.3b802841.chunk.js",
     "static/js/2.3b802841.chunk.js.map": "/Minesweeper-game/static/js/2.3b802841.chunk.js.map",
     "index.html": "/Minesweeper-game/index.html",
-    "precache-manifest.9b2da295a9a5f760d549a474cc746917.js": "/Minesweeper-game/precache-manifest.9b2da295a9a5f760d549a474cc746917.js",
+    "precache-manifest.105c3c2986e68d2f7eecdb5d7545e2a0.js": "/Minesweeper-game/precache-manifest.105c3c2986e68d2f7eecdb5d7545e2a0.js",
     "service-worker.js": "/Minesweeper-game/service-worker.js",
-    "static/css/main.dd4e2329.chunk.css.map": "/Minesweeper-game/static/css/main.dd4e2329.chunk.css.map",
+    "static/css/main.568aa9ea.chunk.css.map": "/Minesweeper-game/static/css/main.568aa9ea.chunk.css.map",
     "static/js/2.3b802841.chunk.js.LICENSE.txt": "/Minesweeper-game/static/js/2.3b802841.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.41195150.js",
     "static/js/2.3b802841.chunk.js",
-    "static/css/main.dd4e2329.chunk.css",
-    "static/js/main.317b3c58.chunk.js"
+    "static/css/main.568aa9ea.chunk.css",
+    "static/js/main.9dd5c13a.chunk.js"
   ]
 }
