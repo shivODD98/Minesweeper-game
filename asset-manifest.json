@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/minesweeper-game/static/css/main.dd4e2329.chunk.css",
-    "main.js": "/minesweeper-game/static/js/main.89012c73.chunk.js",
-    "main.js.map": "/minesweeper-game/static/js/main.89012c73.chunk.js.map",
-    "runtime-main.js": "/minesweeper-game/static/js/runtime-main.acdb6bd8.js",
-    "runtime-main.js.map": "/minesweeper-game/static/js/runtime-main.acdb6bd8.js.map",
-    "static/js/2.3b802841.chunk.js": "/minesweeper-game/static/js/2.3b802841.chunk.js",
-    "static/js/2.3b802841.chunk.js.map": "/minesweeper-game/static/js/2.3b802841.chunk.js.map",
-    "index.html": "/minesweeper-game/index.html",
-    "precache-manifest.f4cb5988b8cc389236dfbc6ac5584021.js": "/minesweeper-game/precache-manifest.f4cb5988b8cc389236dfbc6ac5584021.js",
-    "service-worker.js": "/minesweeper-game/service-worker.js",
-    "static/css/main.dd4e2329.chunk.css.map": "/minesweeper-game/static/css/main.dd4e2329.chunk.css.map",
-    "static/js/2.3b802841.chunk.js.LICENSE.txt": "/minesweeper-game/static/js/2.3b802841.chunk.js.LICENSE.txt"
+    "main.css": "/Minesweeper-game/static/css/main.dd4e2329.chunk.css",
+    "main.js": "/Minesweeper-game/static/js/main.6548f013.chunk.js",
+    "main.js.map": "/Minesweeper-game/static/js/main.6548f013.chunk.js.map",
+    "runtime-main.js": "/Minesweeper-game/static/js/runtime-main.41195150.js",
+    "runtime-main.js.map": "/Minesweeper-game/static/js/runtime-main.41195150.js.map",
+    "static/js/2.3b802841.chunk.js": "/Minesweeper-game/static/js/2.3b802841.chunk.js",
+    "static/js/2.3b802841.chunk.js.map": "/Minesweeper-game/static/js/2.3b802841.chunk.js.map",
+    "index.html": "/Minesweeper-game/index.html",
+    "precache-manifest.0ac6886f253040fe7b77b220aad915a3.js": "/Minesweeper-game/precache-manifest.0ac6886f253040fe7b77b220aad915a3.js",
+    "service-worker.js": "/Minesweeper-game/service-worker.js",
+    "static/css/main.dd4e2329.chunk.css.map": "/Minesweeper-game/static/css/main.dd4e2329.chunk.css.map",
+    "static/js/2.3b802841.chunk.js.LICENSE.txt": "/Minesweeper-game/static/js/2.3b802841.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.acdb6bd8.js",
+    "static/js/runtime-main.41195150.js",
     "static/js/2.3b802841.chunk.js",
     "static/css/main.dd4e2329.chunk.css",
-    "static/js/main.89012c73.chunk.js"
+    "static/js/main.6548f013.chunk.js"
   ]
 }
