@@ -35,6 +35,10 @@
   background-color: brown;
 }
 
+.grid-cell-marked {
+  background-color: yellow;
+}
+
 .game-header {
   display: grid;
   grid-template-columns: repeat(3, auto);
