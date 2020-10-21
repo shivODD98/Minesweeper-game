@@ -28,7 +28,7 @@ function GameHeader(props) {
 
   const renderNumberOfFlags = () => {
     return (
-      <div className="game-header-flags">10</div>
+      <div className="game-header-flags">POOOO</div>
     )
   }
 
