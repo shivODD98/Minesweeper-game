@@ -22,7 +22,6 @@ function GameCell(props) {
         <div onClick={() => uncoverCell(row, col)}className={`grid-cell${'-' + status}`}>
             <div>{mine === true ? 'mine' : ''}</div>
             <div>{count}</div>
-            <div>{status}</div>
         </div>
       )
   }

@@ -8,24 +8,42 @@ function GameContainer(props) {
   const [gameType, setGameType] = useState('easy');
   const [gameBoard, setGameBoard] = useState([]);
   const [numberOfUncoveredCells, setNumberOfUncoveredCells] = useState(0);
+  const [numberOfShownCells, setNumberOfShownCells] = useState(0);
   const [numberOfMines, setNumberOfMines] = useState(10);
-  const [exploded, setExploded] = useState(false)
+  const [exploded, setExploded] = useState(false);
+  const [win, setWin] = useState(false);
 
   const easyGameBoard = {
-      width: 10,
-      height: 8,
-      mines: 10,
+    cols: 10,
+    rows: 8,
+    mines: 10,
   };
 
   const hardGameBoard = {
-    width: 18,
-    height: 14,
+    cols: 18,
+    rows: 14,
     mines: 40,
   };
 
   useEffect(()=> {
     // renderGameBoard();
   },[gameType, setGameType])
+
+  useEffect(()=> {
+    console.log(exploded)
+    if (exploded) {
+        console.log('ending game')
+        endGame('lost')
+    }
+  },[exploded, setExploded])
+
+  useEffect(()=> {
+    console.log(win)
+    if (win) {
+        console.log('ending game')
+        endGame('won')
+    }
+  },[win, setWin])
 
   useEffect(()=> {
       console.log(gameBoard)
@@ -37,27 +55,29 @@ function GameContainer(props) {
   }
 
   const validCoord = (row, col) => {
-    const { width, height } = gameType === 'easy' ? easyGameBoard : hardGameBoard;
-    return row >= 0 && row < width && col >= 0 && col < height;
+    const { rows, cols } = gameType === 'easy' ? easyGameBoard : hardGameBoard;
+    return row >= 0 && row < rows && col >= 0 && col < cols;
 }
 
   const count = (row, col) => {
-    const c = (r,c) => (validCoord(r, c) && (gameBoard[r][c].mine ? 1 : 0));
+    const c = (r,c) => {
+        return (validCoord(r, c) && (gameBoard[r][c].mine ? 1 : 0))};
     let res = 0;
     for( let dr = -1 ; dr <= 1 ; dr ++ )
         for( let dc = -1 ; dc <= 1 ; dc ++ )
             res += c(row+dr,col+dc);
+
     return res;
   }
 
-  const sprinkleMines = () => {
+  const sprinkleMines = (row, col) => {
     // prepare a list of allowed coordinates for mine placement
     console.log('sprinkling mines')
-    const { width, height, mines } = gameType === 'easy' ? easyGameBoard : hardGameBoard;
+    const { rows, cols, mines } = gameType === 'easy' ? easyGameBoard : hardGameBoard;
     let allowed = [];
-    for(let r = 0 ; r < width ; r ++ ) {
-        for( let c = 0 ; c < height ; c ++ ) {
-            if(Math.abs(width-r) > 2 || Math.abs(height-c) > 2) {
+    for(let r = 0 ; r < rows ; r ++ ) {
+        for( let c = 0 ; c < cols ; c ++ ) {
+            if(Math.abs(row-r) > 2 || Math.abs(col-c) > 2) {
             allowed.push([r,c]);
             }
         }
@@ -70,10 +90,8 @@ function GameContainer(props) {
         gameBoard[r][c].mine=true;
     }
     // erase any marks (in case user placed them) and update counts
-    for(let r = 0 ; r < width ; r ++ ) {
-        console.log('setting count')
-        for( let c = 0 ; c < height ; c ++ ) {
-            console.log('pt 2')
+    for(let r = 0 ; r < rows ; r ++ ) {
+        for( let c = 0 ; c < cols ; c ++ ) {
             if(gameBoard[r][c].status === 'marked') {
                 gameBoard[r][c].status = 'hidden';
             }
@@ -84,7 +102,7 @@ function GameContainer(props) {
 
   const uncoverCell = (row, col) => {
       if (numberOfUncoveredCells === 0) {
-          sprinkleMines();
+          sprinkleMines(row, col);
       }
 
       if( gameBoard[row][col].status !== 'hidden') return false;
@@ -93,7 +111,7 @@ function GameContainer(props) {
         if( ! validCoord(r,c)) return;
         if( gameBoard[r][c].status !== 'hidden') return;
         gameBoard[r][c].status = 'shown';
-        setNumberOfUncoveredCells(numberOfUncoveredCells + 1)
+        setNumberOfUncoveredCells(numberOfUncoveredCells + 1);
         if( gameBoard[r][c].count !== 0) return;
         ff(r-1,c-1);ff(r-1,c);ff(r-1,c+1);
         ff(r  ,c-1);         ;ff(r  ,c+1);
@@ -104,14 +122,20 @@ function GameContainer(props) {
       if( gameBoard[row][col].mine) {
         setExploded(true);
       }
+      const { rows, cols, mines } = gameType === 'easy' ? easyGameBoard : hardGameBoard;
+      console.log(numberOfUncoveredCells, numberOfMines)
+      if((numberOfShownCells + numberOfMines) === (rows*cols)){
+        console.log(numberOfUncoveredCells, numberOfMines)
+        setWin(true)
+      }
       return true;
   }
 
-  const createGameCells = (width, height) => {
+  const createGameCells = (rows, cols) => {
     const gameCells = [];
-    for(let i = 0; i < width; i = i + 1) {
+    for(let i = 0; i < rows; i = i + 1) {
         gameCells.push([])
-        for(let j = 0; j < height; j = j + 1) {
+        for(let j = 0; j < cols; j = j + 1) {
             gameCells[i].push(
                 <GameCell
                     uncoverCell={uncoverCell}
@@ -127,12 +151,18 @@ function GameContainer(props) {
     return gameCells;
   }
 
-  const renderGameBoard = () => {
-    const { width, height, mines } = gameType === 'easy' ? easyGameBoard : hardGameBoard;
+  const endGame = (winOrLose) => {
+    console.log('gg')
+    setGameBoard(winOrLose === 'lost' ? 
+    (<div onClick={() => restartGame()}>You Lost!!! ;</div>) : (<div onClick={() => restartGame()}>You WON!!! AHHH XD</div>))
+  }
 
-    for(let i = 0; i < width; i = i + 1) {
+  const renderGameBoard = () => {
+      console.log('hello')
+    const { rows, cols, mines } = gameType === 'easy' ? easyGameBoard : hardGameBoard;
+    for(let i = 0; i < rows; i = i + 1) {
         gameBoard.push([])
-        for(let j = 0; j < height; j = j + 1) {
+        for(let j = 0; j < cols; j = j + 1) {
             gameBoard[i].push(
                 {
                     row: i,
@@ -144,23 +174,35 @@ function GameContainer(props) {
             )
         }
     }
-    console.log(gameBoard)
     return (
         <div className={gameType + '-grid-container'}>
-            {createGameCells(width, height)}
+            {createGameCells(rows, cols)}
         </div>
       )
   }
 
+  const restartGame = () => {
+      setExploded(false);
+      setNumberOfUncoveredCells(0);
+      setNumberOfMines(10);
+      setGameBoard([]);
+      renderGameBoard();
+  }
+
   const playGame = () => {
-      console.log(gameBoard)
+      if ((exploded || win) && gameBoard && gameBoard.type === 'div') {
+        console.log('1')
+        return gameBoard;
+      }
       if(gameBoard.length === 0) {
+        console.log('2')
           return renderGameBoard()
       }
-      const { width, height, mines } = gameType === 'easy' ? easyGameBoard : hardGameBoard;
+      console.log('3')
+      const { rows, cols, mines } = gameType === 'easy' ? easyGameBoard : hardGameBoard;
       return (
         <div className={gameType + '-grid-container'}>
-            {createGameCells(width, height)}
+            {createGameCells(rows, cols)}
         </div>
       )
   }
