@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Minesweeper-game/static/css/main.db1ca544.chunk.css",
+    "main.css": "/Minesweeper-game/static/css/main.9cca92a1.chunk.css",
     "main.js": "/Minesweeper-game/static/js/main.2403f9fc.chunk.js",
     "main.js.map": "/Minesweeper-game/static/js/main.2403f9fc.chunk.js.map",
     "runtime-main.js": "/Minesweeper-game/static/js/runtime-main.41195150.js",
@@ -8,15 +8,15 @@
     "static/js/2.a208a553.chunk.js": "/Minesweeper-game/static/js/2.a208a553.chunk.js",
     "static/js/2.a208a553.chunk.js.map": "/Minesweeper-game/static/js/2.a208a553.chunk.js.map",
     "index.html": "/Minesweeper-game/index.html",
-    "precache-manifest.ad4fc29d71dd8cbba4ea72bb7041e318.js": "/Minesweeper-game/precache-manifest.ad4fc29d71dd8cbba4ea72bb7041e318.js",
+    "precache-manifest.b922c3ef37a572d23f4fc458e0f8a6c6.js": "/Minesweeper-game/precache-manifest.b922c3ef37a572d23f4fc458e0f8a6c6.js",
     "service-worker.js": "/Minesweeper-game/service-worker.js",
-    "static/css/main.db1ca544.chunk.css.map": "/Minesweeper-game/static/css/main.db1ca544.chunk.css.map",
+    "static/css/main.9cca92a1.chunk.css.map": "/Minesweeper-game/static/css/main.9cca92a1.chunk.css.map",
     "static/js/2.a208a553.chunk.js.LICENSE.txt": "/Minesweeper-game/static/js/2.a208a553.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.41195150.js",
     "static/js/2.a208a553.chunk.js",
-    "static/css/main.db1ca544.chunk.css",
+    "static/css/main.9cca92a1.chunk.css",
     "static/js/main.2403f9fc.chunk.js"
   ]
 }
