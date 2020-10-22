@@ -7,6 +7,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  max-height: 100%;
   width: auto;
   background-color: #dddddd;;
   border: 1px solid #dddddd;;
@@ -18,14 +19,14 @@
   display: grid;
   grid-gap: 1px;
   grid-template-columns: repeat(10, minmax(1em, 5em));  
-  grid-auto-rows: 5em;
+  grid-auto-rows: minmax(1em, 5em)
 }
 
 .hard-grid-container {
   display: grid;
   grid-gap: 1px;
   grid-template-columns: repeat(18, minmax(1em, 3em));  
-  grid-auto-rows: 3em;
+  grid-auto-rows: minmax(1em, 3em)
 }
 
 .grid-cell-count {
@@ -75,7 +76,10 @@
 }
 
 @media screen and (orientation:portrait) { 
-  .App {width: 100%;}
+  .App {
+    width: 100%;
+    max-height: calc(100%-100px);
+  }
 }
 @media screen and (orientation:landscape) {
   .App {max-width: 800px;}
