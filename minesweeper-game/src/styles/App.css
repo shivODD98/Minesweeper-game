@@ -71,7 +71,6 @@
 
 .end-game {
   height: 100%;
-  width: 800px;
   margin: auto;
 }
 
@@ -80,7 +79,14 @@
     width: 100%;
     max-height: calc(100%-100px);
   }
+  .end-game{
+    width: 100%;
+  }
 }
 @media screen and (orientation:landscape) {
   .App {max-width: 800px;}
+  .end-game{
+    width: 800px;
+    max-width: 800px;
+  }
 }
