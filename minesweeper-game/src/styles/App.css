@@ -4,9 +4,14 @@
 }
 
 .Game-Container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   width: auto;
-  background-color: gray;
-  border: 1px solid gray;
+  background-color: #dddddd;;
+  border: 1px solid #dddddd;;
+  border-radius: 3px;
+  padding: 5px;
 }
 
 .easy-grid-container {
@@ -23,20 +28,20 @@
   grid-auto-rows: 3em;
 }
 
-.grid-cell {
-  background-color: blue;
+.grid-cell-count {
+  padding: 30% 0px;
 }
 
 .grid-cell-hidden {
-  background-color: blue;
+  background-color: rgba(10, 184, 30, 0.7);
 }
 
 .grid-cell-shown {
-  background-color: brown;
+  background-color: rgba(10, 184, 30, 0.4);
 }
 
 .grid-cell-marked {
-  background-color: yellow;
+  background-color: rgba(10, 184, 30, 0.7);
 }
 
 .game-header {
@@ -46,19 +51,28 @@
 }
 
 .game-header-difficulty {
+  margin-bottom: auto;
   height: 100%;
 }
 
 .game-header-difficulty-dropdown {
   height: 100%;
+  margin-bottom: auto;
 }
 
 .game-header-flags {
+  padding: 2px;
 }
 
 .game-header-time {
+  padding: 2px;
 }
 
+.end-game {
+  height: 100%;
+  width: 800px;
+  margin: auto;
+}
 
 @media screen and (orientation:portrait) { 
   .App {width: 100%;}

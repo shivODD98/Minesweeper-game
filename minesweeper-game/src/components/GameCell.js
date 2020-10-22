@@ -1,10 +1,13 @@
-import React,  {useEffect, useState, useCallback  }from 'react';
+import React,  {useEffect, useState  }from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFlag } from '@fortawesome/free-solid-svg-icons'
 import '../styles/App.css';
 
 function GameCell(props) {
   const [startTapHold, setStartTapHold] = useState(false);
   const [disableClick, setDisableClick] = useState(false);
-  const ms = 300;
+  const [isMarkingCell, setIsMarkingCell] = useState(false)
+  const ms = 1000;
   const {
     uncoverCell,
     markCell,
@@ -13,18 +16,20 @@ function GameCell(props) {
     mine,
     count,
     status,
+    cell,
   } = props;
 
   useEffect(()=> {
-  }, [mine])
+    console.log(status)
+  }, [row, col, mine, count, status,cell])
 
-  
   useEffect(() => {
     let timerId;
-    if (startTapHold) {
-      timerId = setTimeout(markCellCallBack, ms);
-    } else {
-      clearTimeout(timerId);
+    if (startTapHold && !disableClick) {
+      timerId= setTimeout(() => {
+        console.log('in callback' + row + ',' + col)
+        if(startTapHold) markCellCallBack();
+      }, ms);
     }
     return () => {
       clearTimeout(timerId);
@@ -33,13 +38,12 @@ function GameCell(props) {
 
   const markCellCallBack = () => {
     const newStatus = status === 'hidden' ? 'marked' : 'hidden';
-    markCell(row, col, newStatus)
+    markCell(row, col, newStatus, isMarkingCell)
     setDisableClick(true);
-    setTimeout(() => {setDisableClick(false);}, 1000);
+    setTimeout(() => {setDisableClick(false);}, 500);
   }
 
   const handleCellClick = (event) => {
-    console.log(event.type)
     switch(event.type) {
       case 'mousedown': {
         setStartTapHold(true);
@@ -62,7 +66,7 @@ function GameCell(props) {
         break;
       }
       case 'click': {
-        if (!disableClick ){
+        if (!disableClick){
           uncoverCell(row, col)
         }
         break;
@@ -88,9 +92,10 @@ function GameCell(props) {
           onMouseLeave={handleCellClick}
           onTouchStart={handleCellClick}
           onTouchEnd={handleCellClick}
-          className={`grid-cell${'-' + status}`}>
-            <div>{mine === true ? 'mine' : ''}</div>
-            <div>{count}</div>
+          className={`grid-cell${'-' + status}`}
+        >
+            {status === 'shown' && <div className='grid-cell-count'>{count}</div>}
+            {status === 'marked' && <div className='grid-cell-count'><FontAwesomeIcon icon={faFlag} /></div>}
         </div>
       )
   }
